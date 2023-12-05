@@ -20,16 +20,14 @@ const ProductList = ({ products, setProducts, setListUpdated, setUpdateProductId
       return;
     }
 
-    const { product_name, product_description, product_price, id_categoria, product_stock } = selectedProduct;
-
     // Establecer el ID del producto y los datos del formulario
     setUpdateProductId(id);
     setProductsForm({
-      product_name,
-      product_description,
-      product_price: parseFloat(product_price),
-      id_categoria,
-      product_stock,
+      product_name: selectedProduct.product_name,
+      product_description: selectedProduct.product_description,
+      product_price: selectedProduct.product_price.toString(), // Convertir a cadena
+      id_categoria: selectedProduct.id_categoria.toString(), // Convertir a cadena
+      product_stock: selectedProduct.product_stock.toString(), // Convertir a cadena
     });
   };
 
