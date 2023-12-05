@@ -5,9 +5,11 @@ import Form from './Components/Form.js';
 
 function App() {
   const [productsForm, setProductsForm] = useState({
-    title: '',
-    description: '',
-    price: '',
+    product_name: '',
+    product_description: '',
+    product_price: '',
+    id_categoria: '',
+    product_stock: '',
     edicion: 0,
   });
 
@@ -31,11 +33,18 @@ function App() {
   return (
     <Fragment>
       <Navbar brand="Library App" />
-      <div className="container">
+      <div className="container mt-4">
         <div className="row">
-          <div className="col-7">
+          <div className="col-12 col-lg-5 mb-3">
+            <h2 style={{ textAlign: 'center' }}>Product Form</h2>
+            <Form
+              productsForm={productsForm}
+              setProductsForm={setProductsForm}
+              updateProductId={updateProductId}
+            />
+          </div>
+          <div className="col-12 col-lg-7">
             <h2 style={{ textAlign: 'center' }}>Products List</h2>
-            {/* Pasamos setUpdateProductId al componente ProductList */}
             <ProductList
               products={productsList}
               setProducts={setProductsList}
@@ -44,11 +53,6 @@ function App() {
               setProductsForm={setProductsForm}
             />
           </div>
-          <div className="col-5">
-            <h2 style={{ textAlign: 'center' }}>Product Form</h2>
-            {/* Pasamos updateProductId al componente Form */}
-            <Form productsForm={productsForm} setProductsForm={setProductsForm} updateProductId={updateProductId} />
-          </div>
         </div>
       </div>
     </Fragment>
@@ -56,3 +60,14 @@ function App() {
 }
 
 export default App;
+
+
+/* 
+Dear programmer:
+When I wrote this code, only god and I knew how it worked.
+Now, only god knows it!
+Therefore, if you are trying to optimize
+this routine and it fails (most surely),
+please increase this counter as awarning for the next person:
+total_hours_wasted_here = 150 
+*/

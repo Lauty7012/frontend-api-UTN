@@ -11,3 +11,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.nav-new {
+  height: 100px;
+  background-color: black;
+  display:flex;
+  justify-content: center;
+
+}
+.nav-new a {
+  padding: 5px;
+  text-decoration: none;
+  font-size: 3rem;
+  color: white;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

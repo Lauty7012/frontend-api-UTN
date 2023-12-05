@@ -14,58 +14,23 @@ const ProductList = ({ products, setProducts, setListUpdated, setUpdateProductId
 
   const handleUpdate = (id) => {
     const selectedProduct = products.find((product) => product.product_id === id);
-  
+
     if (!selectedProduct) {
       console.error(`Product with id ${id} not found.`);
       return;
     }
-  
+
     const { product_name, product_description, product_price, id_categoria, product_stock } = selectedProduct;
-  
-    console.log("Selected Product:", selectedProduct);
-    
-    const priceAsNumber = parseFloat(product_price);
-
-    if (product_name === '' || product_description === '' || isNaN(priceAsNumber) || priceAsNumber <= 0) {
-      alert('Todos los campos son obligatorios y el precio debe ser un número mayor a cero.');
-      return;
-    }
-
-    const updatedProduct = {
-      product_name,
-      product_description,
-      product_price: priceAsNumber,
-      id_categoria,
-      product_stock,
-    };
 
     // Establecer el ID del producto y los datos del formulario
     setUpdateProductId(id);
     setProductsForm({
-      product_name: updatedProduct.product_name,
-      product_description: updatedProduct.product_description,
-      product_price: updatedProduct.product_price,
-      id_categoria: updatedProduct.id_categoria,
-      product_stock: updatedProduct.product_stock,
+      product_name,
+      product_description,
+      product_price: parseFloat(product_price),
+      id_categoria,
+      product_stock,
     });
-
-    const updatedProducts = products.map((product) =>
-      product.product_id === id ? updatedProduct : product
-    );
-
-    const requestInit = {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(updatedProduct),
-    };
-
-    fetch(`http://localhost:3001/api/products/${id}`, requestInit)
-      .then((res) => res.text())
-      .then((res) => console.log(res));
-
-    setProducts(updatedProducts);
-
-    setListUpdated(true);
   };
 
   return (
